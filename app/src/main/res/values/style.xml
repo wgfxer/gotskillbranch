@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.AppCompat.Title">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.FieldName">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/color_primary_dark</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.FieldContent">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/color_gray</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+
+    <style name="ActivityTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="searchViewStyle">@style/Widget.AppCompat.SearchView.ActionBar</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="ActivityTheme">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="android:textColorHint">@color/color_gray_light</item>
+    </style>
+
+</resources>

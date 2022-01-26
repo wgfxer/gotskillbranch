@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_icon_decor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/margin_xsmall"
+        android:layout_marginTop="@dimen/margin_xsmall"
+        android:layout_marginBottom="@dimen/margin_xsmall"
+        android:importantForAccessibility="no"/>
+
+    <TextView
+        android:id="@+id/field_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_xsmall"
+        android:textAppearance="@style/TextAppearance.AppCompat.FieldName"
+        app:layout_constraintStart_toEndOf="@id/icon"
+        app:layout_constraintTop_toTopOf="@id/icon"
+        app:layout_constraintBottom_toBottomOf="@id/icon"
+        tools:text="Words:"/>
+
+    <TextView
+        android:id="@+id/field_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_xsmall"
+        android:layout_marginEnd="@dimen/margin_xsmall"
+        android:textAppearance="@style/TextAppearance.AppCompat.FieldContent"
+        app:layout_constraintStart_toEndOf="@id/field_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/field_name"
+        tools:text="Fire and Blood"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="constraint_match_parent">0dp</dimen>
+
+    <dimen name="margin_xsmall">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_xxlarge">60dp</dimen>
+    <dimen name="margin_giant">72dp</dimen>
+
+    <dimen name="house_logo_size">36dp</dimen>
+
+    <dimen name="common_divider_height">1dp</dimen>
+</resources>
