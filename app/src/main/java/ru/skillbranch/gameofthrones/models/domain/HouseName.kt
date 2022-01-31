@@ -82,3 +82,23 @@ val HOUSES_ORDERED = listOf(
     HouseName.MARTEL,
     HouseName.TYRELL
 )
+
+val SHORTNAMES_MAP = mapOf(
+    HouseName.STARK.fullName to HouseName.STARK.shortName,
+    HouseName.LANNISTER.fullName to HouseName.LANNISTER.shortName,
+    HouseName.TARGARYEN.fullName to HouseName.TARGARYEN.shortName,
+    HouseName.BARATHEON.fullName to HouseName.BARATHEON.shortName,
+    HouseName.GREYJOY.fullName to HouseName.GREYJOY.shortName,
+    HouseName.MARTEL.fullName to HouseName.MARTEL.shortName,
+    HouseName.TYRELL.fullName to HouseName.TYRELL.shortName,
+)
+
+val FULLNAMES_MAP = mapOf(
+     HouseName.STARK.shortName to HouseName.STARK.fullName,
+     HouseName.LANNISTER.shortName to HouseName.LANNISTER.fullName,
+     HouseName.TARGARYEN.shortName to HouseName.TARGARYEN.fullName,
+     HouseName.BARATHEON.shortName to HouseName.BARATHEON.fullName,
+     HouseName.GREYJOY.shortName to HouseName.GREYJOY.fullName,
+     HouseName.MARTEL.shortName to HouseName.MARTEL.fullName,
+     HouseName.TYRELL.shortName to HouseName.TYRELL.fullName,
+)

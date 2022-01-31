@@ -4,11 +4,11 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
-import ru.skillbranch.gameofthrones.models.domain.CharacterFull
-import ru.skillbranch.gameofthrones.models.domain.CharacterItem
-import ru.skillbranch.gameofthrones.models.data.CharacterRes
-import ru.skillbranch.gameofthrones.models.data.HouseRes
-import ru.skillbranch.gameofthrones.data.remote.repositories.RootRepository
+import ru.skillbranch.gameofthrones.data.local.entities.CharacterFull
+import ru.skillbranch.gameofthrones.data.local.entities.CharacterItem
+import ru.skillbranch.gameofthrones.data.remote.res.CharacterRes
+import ru.skillbranch.gameofthrones.data.remote.res.HouseRes
+import ru.skillbranch.gameofthrones.repositories.RootRepository
 
 
 /**
@@ -189,94 +189,94 @@ class ExampleInstrumentedTest {
         assertEquals(true, needResult2)
     }
 
-    // @Test
-    // fun insert_characters_and_find() {
-    //     ///Дроп базы
-    //     val lock = Object()
-    //     RootRepository.dropDb {
-    //         synchronized(lock) { lock.notify() }
-    //     }
-    //     synchronized(lock) { lock.wait() }
-    //
-    //     //Запись домов
-    //     val lock0 = Object()
-    //     RootRepository.insertHouses(listOf(stubHouseStark, stubHouseTargaryen)) {
-    //         synchronized(lock0) { lock0.notify() }
-    //     }
-    //     synchronized(lock0) { lock0.wait() }
-    //
-    //     //Запись персонажей
-    //     val lock1 = Object()
-    //     val characters = listOf(
-    //         stubCharacterJonSnow.apply { houseId = "Stark" },
-    //         stubCharacterLyanna.apply { houseId = "Stark" },
-    //         stubCharacterRhaegar.apply { houseId = "Targaryen" }
-    //     )
-    //     RootRepository.insertCharacters(characters) {
-    //         synchronized(lock1) { lock1.notify() }
-    //     }
-    //     synchronized(lock1) { lock1.wait() }
-    //
-    //     val lock2 = Object()
-    //     var actualCharacters: List<CharacterItem>? = null
-    //     RootRepository.findCharactersByHouseName("Stark") {
-    //         actualCharacters = it
-    //         synchronized(lock2) { lock2.notify() }
-    //     }
-    //     synchronized(lock2) { lock2.wait() }
-    //
-    //     assertEquals(stubCharacterJonSnow.name, actualCharacters?.first()?.name)
-    //     assertEquals(stubCharacterJonSnow.aliases, actualCharacters?.first()?.aliases)
-    //
-    //     assertEquals(stubCharacterLyanna.name, actualCharacters?.last()?.name)
-    //     assertEquals(stubCharacterLyanna.aliases, actualCharacters?.last()?.aliases)
-    // }
-    //
-    // @Test
-    // fun insert_characters_and_full() {
-    //     ///Дроп базы
-    //     val lock = Object()
-    //     RootRepository.dropDb {
-    //         synchronized(lock) { lock.notify() }
-    //     }
-    //     synchronized(lock) { lock.wait() }
-    //
-    //     //Запись домов
-    //     val lock0 = Object()
-    //     RootRepository.insertHouses(listOf(stubHouseStark, stubHouseTargaryen)) {
-    //         synchronized(lock0) { lock0.notify() }
-    //     }
-    //     synchronized(lock0) { lock0.wait() }
-    //
-    //     //Запись персонажей
-    //     val lock1 = Object()
-    //     val characters = listOf(
-    //         stubCharacterJonSnow.apply { houseId = "Stark" },
-    //         stubCharacterLyanna.apply { houseId = "Stark" },
-    //         stubCharacterRhaegar.apply { houseId = "Targaryen" }
-    //     )
-    //     RootRepository.insertCharacters(characters) {
-    //         synchronized(lock1) { lock1.notify() }
-    //     }
-    //     synchronized(lock1) { lock1.wait() }
-    //
-    //     val lock2 = Object()
-    //     var actualCharacter: CharacterFull? = null
-    //     RootRepository.findCharacterFullById("583") {
-    //         actualCharacter = it
-    //         synchronized(lock2) { lock2.notify() }
-    //     }
-    //     synchronized(lock2) { lock2.wait() }
-    //
-    //     assertEquals(stubCharacterJonSnow.name, actualCharacter?.name)
-    //     assertEquals(stubCharacterJonSnow.aliases, actualCharacter?.aliases)
-    //
-    //     assertEquals(stubCharacterRhaegar.name, actualCharacter?.father?.name)
-    //     assertEquals("Targaryen", actualCharacter?.father?.house)
-    //
-    //     assertEquals(stubCharacterLyanna.name, actualCharacter?.mother?.name)
-    //     assertEquals("Stark", actualCharacter?.mother?.house)
-    // }
+    @Test
+    fun insert_characters_and_find() {
+        ///Дроп базы
+        val lock = Object()
+        RootRepository.dropDb {
+            synchronized(lock) { lock.notify() }
+        }
+        synchronized(lock) { lock.wait() }
+
+        //Запись домов
+        val lock0 = Object()
+        RootRepository.insertHouses(listOf(stubHouseStark, stubHouseTargaryen)) {
+            synchronized(lock0) { lock0.notify() }
+        }
+        synchronized(lock0) { lock0.wait() }
+
+        //Запись персонажей
+        val lock1 = Object()
+        val characters = listOf(
+            stubCharacterJonSnow.apply { houseId = "Stark" },
+            stubCharacterLyanna.apply { houseId = "Stark" },
+            stubCharacterRhaegar.apply { houseId = "Targaryen" }
+        )
+        RootRepository.insertCharacters(characters) {
+            synchronized(lock1) { lock1.notify() }
+        }
+        synchronized(lock1) { lock1.wait() }
+
+        val lock2 = Object()
+        var actualCharacters: List<CharacterItem>? = null
+        RootRepository.findCharactersByHouseName("Stark") {
+            actualCharacters = it
+            synchronized(lock2) { lock2.notify() }
+        }
+        synchronized(lock2) { lock2.wait() }
+
+        assertEquals(stubCharacterJonSnow.name, actualCharacters?.first()?.name)
+        assertEquals(stubCharacterJonSnow.aliases, actualCharacters?.first()?.aliases)
+
+        assertEquals(stubCharacterLyanna.name, actualCharacters?.last()?.name)
+        assertEquals(stubCharacterLyanna.aliases, actualCharacters?.last()?.aliases)
+    }
+
+    @Test
+    fun insert_characters_and_full() {
+        ///Дроп базы
+        val lock = Object()
+        RootRepository.dropDb {
+            synchronized(lock) { lock.notify() }
+        }
+        synchronized(lock) { lock.wait() }
+
+        //Запись домов
+        val lock0 = Object()
+        RootRepository.insertHouses(listOf(stubHouseStark, stubHouseTargaryen)) {
+            synchronized(lock0) { lock0.notify() }
+        }
+        synchronized(lock0) { lock0.wait() }
+
+        //Запись персонажей
+        val lock1 = Object()
+        val characters = listOf(
+            stubCharacterJonSnow.apply { houseId = "Stark" },
+            stubCharacterLyanna.apply { houseId = "Stark" },
+            stubCharacterRhaegar.apply { houseId = "Targaryen" }
+        )
+        RootRepository.insertCharacters(characters) {
+            synchronized(lock1) { lock1.notify() }
+        }
+        synchronized(lock1) { lock1.wait() }
+
+        val lock2 = Object()
+        var actualCharacter: CharacterFull? = null
+        RootRepository.findCharacterFullById("583") {
+            actualCharacter = it
+            synchronized(lock2) { lock2.notify() }
+        }
+        synchronized(lock2) { lock2.wait() }
+
+        assertEquals(stubCharacterJonSnow.name, actualCharacter?.name)
+        assertEquals(stubCharacterJonSnow.aliases, actualCharacter?.aliases)
+
+        assertEquals(stubCharacterRhaegar.name, actualCharacter?.father?.name)
+        assertEquals("Targaryen", actualCharacter?.father?.house)
+
+        assertEquals(stubCharacterLyanna.name, actualCharacter?.mother?.name)
+        assertEquals("Stark", actualCharacter?.mother?.house)
+    }
 
     @Test
     fun get_all_houses() {

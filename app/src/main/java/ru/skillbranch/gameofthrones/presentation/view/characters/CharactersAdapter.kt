@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.skillbranch.gameofthrones.R
-import ru.skillbranch.gameofthrones.models.domain.Character
+import ru.skillbranch.gameofthrones.data.local.entities.Character
 import ru.skillbranch.gameofthrones.models.domain.HouseName
 import ru.skillbranch.gameofthrones.utils.StringUtils
 

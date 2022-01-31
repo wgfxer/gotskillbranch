@@ -31,9 +31,9 @@ class StartActivity : AppCompatActivity() {
         setContentView(R.layout.activity_start)
         val gameOfThronesApi = GameOfThronesService.create()
         val rxSchedulers = RxSchedulersImpl()
-        val characterDao = (application as GameOfThronesApplication).db.getCharacterDao()
+        val gameOfThronesDao = (application as GameOfThronesApplication).db.getGameOfThronesDao()
         val characterConverter = CharacterConverter()
-        val houseInteractor = HouseInteractorImpl(gameOfThronesApi, characterConverter, characterDao)
+        val houseInteractor = HouseInteractorImpl(gameOfThronesApi, characterConverter, gameOfThronesDao)
         startViewModel = ViewModelProvider(
             this,
             ViewModelProviderFactory {

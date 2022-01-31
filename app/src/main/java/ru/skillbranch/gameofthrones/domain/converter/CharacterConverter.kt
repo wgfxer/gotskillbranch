@@ -1,7 +1,7 @@
 package ru.skillbranch.gameofthrones.domain.converter
 
-import ru.skillbranch.gameofthrones.models.data.CharacterRes
-import ru.skillbranch.gameofthrones.models.domain.Character
+import ru.skillbranch.gameofthrones.data.remote.res.CharacterRes
+import  ru.skillbranch.gameofthrones.data.local.entities.Character
 import ru.skillbranch.gameofthrones.utils.OneWayConverter
 import ru.skillbranch.gameofthrones.utils.StringUtils
 
@@ -14,7 +14,7 @@ class CharacterConverter : OneWayConverter<CharacterRes, Character> {
 
     override fun convert(value: CharacterRes): Character {
         return Character(
-            value.url,
+            StringUtils.getIdFromUrl(value.url).toString(),
             value.name,
             value.gender,
             value.culture,
@@ -25,7 +25,6 @@ class CharacterConverter : OneWayConverter<CharacterRes, Character> {
             value.father,
             value.mother,
             value.spouse,
-            emptySet(),
             StringUtils.EMPTY
         )
     }

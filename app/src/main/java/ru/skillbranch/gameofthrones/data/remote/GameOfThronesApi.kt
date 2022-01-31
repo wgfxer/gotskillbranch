@@ -4,8 +4,8 @@ import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import ru.skillbranch.gameofthrones.models.data.CharacterRes
-import ru.skillbranch.gameofthrones.models.data.HouseRes
+import ru.skillbranch.gameofthrones.data.remote.res.CharacterRes
+import ru.skillbranch.gameofthrones.data.remote.res.HouseRes
 
 /**
  * @author Valeriy Minnulin

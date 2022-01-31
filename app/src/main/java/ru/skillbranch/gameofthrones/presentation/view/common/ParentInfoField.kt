@@ -42,7 +42,6 @@ class ParentInfoField @JvmOverloads constructor(
 
     fun setParentButtonColor(@ColorRes colorRes: Int) {
         ViewCompat.setBackgroundTintList(parentButton, ContextCompat.getColorStateList(this.context, colorRes))
-        parentButton.setBackgroundResource()
         parentButton.setTextColor(ContextCompat.getColor(this.context, android.R.color.white))
     }
 }

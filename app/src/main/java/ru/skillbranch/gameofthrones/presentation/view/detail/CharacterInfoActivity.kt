@@ -15,7 +15,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_INDEFI
 import com.google.android.material.snackbar.Snackbar
 import ru.skillbranch.gameofthrones.R
 import ru.skillbranch.gameofthrones.domain.CharactersInteractorImpl
-import ru.skillbranch.gameofthrones.models.domain.Character
+import ru.skillbranch.gameofthrones.data.local.entities.Character
 import ru.skillbranch.gameofthrones.models.domain.HouseName
 import ru.skillbranch.gameofthrones.presentation.view.GameOfThronesApplication
 import ru.skillbranch.gameofthrones.presentation.view.common.CharacterInfoField
@@ -74,9 +74,9 @@ class CharacterInfoActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        val characterDao = (application as GameOfThronesApplication).db.getCharacterDao()
+        val gameOfThronesDao = (application as GameOfThronesApplication).db.getGameOfThronesDao()
         val rxSchedulers = RxSchedulersImpl()
-        val charactersInteractor = CharactersInteractorImpl(characterDao)
+        val charactersInteractor = CharactersInteractorImpl(gameOfThronesDao)
         viewModel = ViewModelProvider(this, ViewModelProviderFactory {
             CharacterInfoViewModel(
                 charactersInteractor,
@@ -107,7 +107,7 @@ class CharacterInfoActivity : AppCompatActivity() {
         bornField.setFieldContentText(character.born)
         titlesField.setFieldContentText(character.titles.joinToString())
         aliasesField.setFieldContentText(character.aliases.joinToString())
-        wordsField.setFieldContentText(character.words)
+        //wordsField.setFieldContentText(character.words)
         if (character.died.isNotEmpty()) {
             Snackbar.make(wordsField, "died in: ${character.died}", LENGTH_INDEFINITE).show()
         }

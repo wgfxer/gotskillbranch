@@ -11,16 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.skillbranch.gameofthrones.R
 import ru.skillbranch.gameofthrones.domain.CharactersInteractorImpl
-import ru.skillbranch.gameofthrones.domain.HouseInteractorImpl
-import ru.skillbranch.gameofthrones.models.domain.Character
 import ru.skillbranch.gameofthrones.models.domain.HouseName
 import ru.skillbranch.gameofthrones.presentation.view.GameOfThronesApplication
-import ru.skillbranch.gameofthrones.presentation.view.detail.CharacterInfoActivity
 import ru.skillbranch.gameofthrones.presentation.viewmodel.characters.CharactersViewModel
 import ru.skillbranch.gameofthrones.utils.CharacterInfoLauncher
 import ru.skillbranch.gameofthrones.utils.RxSchedulersImpl
-import ru.skillbranch.gameofthrones.utils.StringUtils
 import ru.skillbranch.gameofthrones.utils.ViewModelProviderFactory
+import ru.skillbranch.gameofthrones.data.local.entities.Character
 
 /**
  * Фрагмент для персонажей одного дома
@@ -49,9 +46,9 @@ class CharactersFragment: Fragment() {
         charactersAdapter = CharactersAdapter(house, CharactersDiffCallback(), getCharacterClickListener())
         charactersRecyclerView.adapter = charactersAdapter
         charactersRecyclerView.addItemDecoration(DividerItemDecoration())
-        val characterDao = (requireActivity().application as GameOfThronesApplication).db.getCharacterDao()
+        val gameOfThronesDao = (requireActivity().application as GameOfThronesApplication).db.getGameOfThronesDao()
         val rxSchedulers = RxSchedulersImpl()
-        val charactersInteractor = CharactersInteractorImpl(characterDao)
+        val charactersInteractor = CharactersInteractorImpl(gameOfThronesDao)
         charactersViewModel = ViewModelProvider(requireActivity(), ViewModelProviderFactory {
             CharactersViewModel(
                 charactersInteractor,

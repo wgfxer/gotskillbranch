@@ -10,7 +10,13 @@ import ru.skillbranch.gameofthrones.data.db.AppDatabase
 class GameOfThronesApplication: Application() {
 
     val db: AppDatabase by lazy {
-        Room.databaseBuilder(this, AppDatabase::class.java, "got-database").build()
+        val db = Room.databaseBuilder(this, AppDatabase::class.java, "got-database").build()
+        DB = db
+        db
+    }
+
+    companion object {
+        var DB: AppDatabase? = null
     }
 
 }

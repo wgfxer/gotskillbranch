@@ -53,9 +53,9 @@ class CharactersActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        val characterDao = (application as GameOfThronesApplication).db.getCharacterDao()
+        val gameOfThronesDao = (application as GameOfThronesApplication).db.getGameOfThronesDao()
         val rxSchedulers = RxSchedulersImpl()
-        val charactersInteractor = CharactersInteractorImpl(characterDao)
+        val charactersInteractor = CharactersInteractorImpl(gameOfThronesDao)
         viewModel = ViewModelProvider(this, ViewModelProviderFactory {
             CharactersViewModel(
                 charactersInteractor,

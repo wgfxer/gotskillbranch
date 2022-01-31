@@ -1,9 +1,6 @@
 package ru.skillbranch.gameofthrones.domain
 
 import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Single
-import ru.skillbranch.gameofthrones.models.domain.Character
-import ru.skillbranch.gameofthrones.models.domain.House
 
 /**
  * @author Valeriy Minnulin

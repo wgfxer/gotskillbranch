@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
 
 }
+apply plugin: 'kotlin-android'
 
 android {
     compileSdk 31
@@ -68,5 +69,12 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-rxjava3:$room_version"
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+}
+
+repositories {
+    google()
+    mavenCentral()
 }

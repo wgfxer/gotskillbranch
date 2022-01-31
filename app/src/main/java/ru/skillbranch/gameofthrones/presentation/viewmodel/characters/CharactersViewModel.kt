@@ -6,10 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import ru.skillbranch.gameofthrones.domain.CharactersInteractor
-import ru.skillbranch.gameofthrones.domain.CharactersInteractorImpl
-import ru.skillbranch.gameofthrones.models.domain.Character
 import ru.skillbranch.gameofthrones.models.domain.HouseName
 import ru.skillbranch.gameofthrones.utils.RxSchedulers
+import ru.skillbranch.gameofthrones.data.local.entities.Character
 
 /**
  * Вьюмодель для экрана со списком персонажей какого-то дома
@@ -45,7 +44,7 @@ class CharactersViewModel(
      */
     fun getCharactersForHouse(house: HouseName): LiveData<List<Character>> {
         return Transformations.map(filteredCharactersLiveData) { characters ->
-            characters.filter { character -> character.houses.contains(house.fullName) }
+            characters.filter { character -> character.houseId.contains(house.fullName) }
         }
     }
 

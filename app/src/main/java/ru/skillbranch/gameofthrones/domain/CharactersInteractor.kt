@@ -2,8 +2,8 @@ package ru.skillbranch.gameofthrones.domain
 
 import androidx.lifecycle.LiveData
 import io.reactivex.rxjava3.core.Single
-import ru.skillbranch.gameofthrones.models.domain.Character
-import ru.skillbranch.gameofthrones.models.domain.HouseName
+import ru.skillbranch.gameofthrones.data.local.entities.Character
+
 
 /**
  * @author Valeriy Minnulin

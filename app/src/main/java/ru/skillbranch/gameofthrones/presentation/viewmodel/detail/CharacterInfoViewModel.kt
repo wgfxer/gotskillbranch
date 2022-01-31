@@ -1,15 +1,13 @@
 package ru.skillbranch.gameofthrones.presentation.viewmodel.detail
 
-import androidx.arch.core.util.Function
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.core.Single
 import ru.skillbranch.gameofthrones.domain.CharactersInteractor
-import ru.skillbranch.gameofthrones.models.domain.Character
 import ru.skillbranch.gameofthrones.utils.RxSchedulers
-import ru.skillbranch.gameofthrones.utils.StringUtils
+import ru.skillbranch.gameofthrones.data.local.entities.Character
+
 
 /**
  * @author Valeriy Minnulin
